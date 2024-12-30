@@ -6,7 +6,7 @@ import ptBr from 'date-fns/locale/pt-BR'
 import { useState } from 'react';
 
 export function Post({ author, publishedAt, content }){
-    const [comments, setComment] = useState([
+    const [comments, setComments] = useState([
         'Post mt legal'
     ])
 
@@ -24,7 +24,7 @@ export function Post({ author, publishedAt, content }){
     function handleCreateNewComment(){
         event.preventDefault()
         
-        setComment([...comments, newCommentText])
+        setComments([...comments, newCommentText])
         setNewCommentText('')
     }
 
@@ -32,8 +32,12 @@ export function Post({ author, publishedAt, content }){
         setNewCommentText(event.target.value)
     }
 
-    function deleteComment(comment){
-        console.log(`deletar comentrário ${comment}`)
+    function deleteComment(commentToDelete){
+        const newCommentsWithoutDeletedOne = comments.filter(comment => {
+            return comment !== commentToDelete;
+        })
+        
+        setComments(newCommentsWithoutDeletedOne)
     }
 
     return (
