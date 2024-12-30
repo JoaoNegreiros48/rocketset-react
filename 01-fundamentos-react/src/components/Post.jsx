@@ -6,9 +6,7 @@ import ptBr from 'date-fns/locale/pt-BR'
 import { useState } from 'react';
 
 export function Post({ author, publishedAt, content }){
-    const [comments, setComments] = useState([
-        'Post mt legal'
-    ])
+    const [comments, setComments] = useState([])
 
     const [newCommentText, setNewCommentText] = useState('')
 
